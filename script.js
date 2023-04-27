@@ -1,10 +1,24 @@
+//OBS:Función asíncrona
+//Se encarga de buscar una palabra de 5 letras por medio de una API
+//En caso de que la API no responda, usa palabra del array predeterminado
+
 const BOTON = document.getElementById('guess-button')
 const CONTENEDOR = document.getElementById('guesses')
 let intentos = 6
-let palabra = 'APPLE'
-let palabrass = ['APPLE','GRAPE','CHAIR','TABLE','HOUSE']
+
+const UrlApi = 'https://random-word-api.herokuapp.com/word?lang=en&length=5';
 BOTON.addEventListener('click', intentar)
-palabra = palabrass[Math.floor(Math.random()*palabra.length)];
+
+let palabra
+fetch(UrlApi).then(response => response.json())
+    .then(response => {
+        palabra = response[0].toUpperCase()
+        console.log(palabra);
+        
+})
+.catch(err => {
+    console.log('hubo un problema con la API! :(');
+});
 
 
 function intentar() {
