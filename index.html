@@ -10,7 +10,7 @@
       <h1>Wordle PPY</h1>
       <p>Se trata de un juego en el que hay que adivinar una <br>
          palabra con un total de seis intentos posibles.</p>
-      <input type="text" pattern="[A-Za-z]" maxlength="5" id="guess-input">
+      <input type="text" pattern="^[A-Za-z]{5}$" maxlength="5" id="guess-input">
       <button id="guess-button">Intentar</button>
       <div id="grid">
         <article id="cuadro">
